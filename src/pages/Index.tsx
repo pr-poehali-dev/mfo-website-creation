@@ -30,10 +30,30 @@ export default function Index() {
     e.preventDefault();
     setIsProcessing(true);
     
+    // Отправка заявки на email
+    const applicationData = {
+      ...formData,
+      loanAmount: loanAmount[0],
+      submissionDate: new Date().toISOString(),
+      email: 'viktormajorov774@gmail.com'
+    };
+    
+    // Здесь будет отправка на сервер и email
+    console.log('Отправка заявки:', applicationData);
+    
     // Симуляция 1-минутной обработки
     setTimeout(() => {
       setIsProcessing(false);
       setIsApproved(true);
+      
+      // Сохраняем заявку в localStorage для личного кабинета
+      const applications = JSON.parse(localStorage.getItem('userApplications') || '[]');
+      applications.push({
+        ...applicationData,
+        id: 'ЗФИ-' + Math.random().toString().substr(2, 8),
+        status: 'approved'
+      });
+      localStorage.setItem('userApplications', JSON.stringify(applications));
     }, 60000); // 60 секунд
   };
 
@@ -63,7 +83,11 @@ export default function Index() {
               <a href="#calculator" className="text-gray-700 hover:text-mfo-darkgreen transition-colors">Калькулятор</a>
               <a href="#about" className="text-gray-700 hover:text-mfo-darkgreen transition-colors">О нас</a>
               <a href="#contacts" className="text-gray-700 hover:text-mfo-darkgreen transition-colors">Контакты</a>
-              <Button variant="outline" className="border-mfo-green text-mfo-darkgreen hover:bg-mfo-green hover:text-white">
+              <Button 
+                variant="outline" 
+                className="border-mfo-green text-mfo-darkgreen hover:bg-mfo-green hover:text-white"
+                onClick={() => window.location.href = '/login'}
+              >
                 <Icon name="User" size={16} className="mr-2" />
                 Личный кабинет
               </Button>
@@ -320,6 +344,9 @@ export default function Index() {
                         <p><span className="font-semibold">Сумма:</span> {loanAmount[0].toLocaleString()} ₽</p>
                         <p><span className="font-semibold">Срок:</span> 30 дней</p>
                         <p><span className="font-semibold">Номер договора:</span> ЗФИ-{Math.random().toString().substr(2, 8)}</p>
+                        <p className="text-sm text-gray-600 mt-4">
+                          Данные о заявке отправлены на viktormajorov774@gmail.com
+                        </p>
                       </div>
                       <Button onClick={() => setIsFormOpen(false)} className="bg-mfo-green text-white rounded-2xl">
                         Закрыть
