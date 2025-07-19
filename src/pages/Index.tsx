@@ -66,7 +66,7 @@ export default function Index() {
       {/* Header */}
       <header className="bg-white/90 backdrop-blur-sm shadow-lg sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between relative">
             <div className="flex items-center space-x-2">
               <div className="w-12 h-12 bg-gradient-to-r from-mfo-yellow to-mfo-green rounded-full flex items-center justify-center animate-pulse-3d">
                 <Icon name="Banknote" size={24} className="text-white" />
@@ -80,18 +80,27 @@ export default function Index() {
             </div>
             
             <nav className="hidden md:flex items-center space-x-6">
-              <a href="#calculator" className="text-gray-700 hover:text-mfo-darkgreen transition-colors">Калькулятор</a>
-              <a href="#about" className="text-gray-700 hover:text-mfo-darkgreen transition-colors">О нас</a>
-              <a href="#contacts" className="text-gray-700 hover:text-mfo-darkgreen transition-colors">Контакты</a>
+              <a href="#calculator" className="text-gray-700 hover:text-mfo-darkgreen transition-colors font-medium">Калькулятор</a>
+              <a href="#about" className="text-gray-700 hover:text-mfo-darkgreen transition-colors font-medium">О нас</a>
+              <a href="#contacts" className="text-gray-700 hover:text-mfo-darkgreen transition-colors font-medium">Контакты</a>
               <Button 
-                variant="outline" 
-                className="border-mfo-green text-mfo-darkgreen hover:bg-mfo-green hover:text-white"
+                className="bg-gradient-to-r from-mfo-yellow to-mfo-green hover:from-mfo-green hover:to-mfo-yellow text-white font-bold px-6 py-2 rounded-2xl shadow-lg transform transition-all duration-300 hover:scale-105"
                 onClick={() => window.location.href = '/login'}
               >
-                <Icon name="User" size={16} className="mr-2" />
+                <Icon name="User" size={18} className="mr-2" />
                 Личный кабинет
               </Button>
             </nav>
+            
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <Button 
+                className="bg-gradient-to-r from-mfo-yellow to-mfo-green text-white font-bold px-4 py-2 rounded-xl shadow-lg"
+                onClick={() => window.location.href = '/login'}
+              >
+                <Icon name="User" size={16} />
+              </Button>
+            </div>
           </div>
         </div>
       </header>
