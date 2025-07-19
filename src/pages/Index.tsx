@@ -191,12 +191,12 @@ export default function Index() {
 
               <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
                 <DialogTrigger asChild>
-                  <Button className="w-full bg-gradient-to-r from-mfo-yellow to-mfo-green hover:from-mfo-green hover:to-mfo-yellow text-white text-lg py-6 transform transition-all duration-300 hover:scale-105 shadow-lg rounded-2xl">
+                  <Button className="w-full bg-gradient-to-r from-mfo-yellow to-mfo-green hover:from-mfo-green hover:to-mfo-yellow text-white text-xl py-8 px-8 transform transition-all duration-300 hover:scale-105 shadow-xl rounded-3xl font-bold">
                     <Icon name="FileText" size={20} className="mr-2" />
                     Подать заявку на {loanAmount[0].toLocaleString()} ₽
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl">
+                <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl p-8">
                   {!isProcessing && !isApproved ? (
                     <>
                       <DialogHeader>
@@ -204,92 +204,100 @@ export default function Index() {
                           Анкета на займ
                         </DialogTitle>
                       </DialogHeader>
-                      <form onSubmit={handleFormSubmit} className="space-y-4">
-                        <div className="grid md:grid-cols-3 gap-4">
+                      <form onSubmit={handleFormSubmit} className="space-y-6">
+                        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
                           <div>
-                            <Label htmlFor="lastName">Фамилия</Label>
+                            <Label htmlFor="lastName" className="text-lg font-semibold text-gray-700">Фамилия</Label>
                             <Input
                               id="lastName"
                               value={formData.lastName}
                               onChange={(e) => setFormData({...formData, lastName: e.target.value})}
                               required
+                              className="h-12 text-lg rounded-xl"
                             />
                           </div>
                           <div>
-                            <Label htmlFor="firstName">Имя</Label>
+                            <Label htmlFor="firstName" className="text-lg font-semibold text-gray-700">Имя</Label>
                             <Input
                               id="firstName"
                               value={formData.firstName}
                               onChange={(e) => setFormData({...formData, firstName: e.target.value})}
                               required
+                              className="h-12 text-lg rounded-xl"
                             />
                           </div>
                           <div>
-                            <Label htmlFor="middleName">Отчество</Label>
+                            <Label htmlFor="middleName" className="text-lg font-semibold text-gray-700">Отчество</Label>
                             <Input
                               id="middleName"
                               value={formData.middleName}
                               onChange={(e) => setFormData({...formData, middleName: e.target.value})}
                               required
+                              className="h-12 text-lg rounded-xl"
                             />
                           </div>
                         </div>
 
                         <div>
-                          <Label htmlFor="birthDate">Дата рождения</Label>
+                          <Label htmlFor="birthDate" className="text-lg font-semibold text-gray-700">Дата рождения</Label>
                           <Input
                             id="birthDate"
                             type="date"
                             value={formData.birthDate}
                             onChange={(e) => setFormData({...formData, birthDate: e.target.value})}
                             required
+                            className="h-12 text-lg rounded-xl"
                           />
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-4">
+                        <div className="grid lg:grid-cols-2 gap-6">
                           <div>
-                            <Label htmlFor="passportSeries">Серия паспорта</Label>
+                            <Label htmlFor="passportSeries" className="text-lg font-semibold text-gray-700">Серия паспорта</Label>
                             <Input
                               id="passportSeries"
                               placeholder="1234"
                               value={formData.passportSeries}
                               onChange={(e) => setFormData({...formData, passportSeries: e.target.value})}
                               required
+                              className="h-12 text-lg rounded-xl"
                             />
                           </div>
                           <div>
-                            <Label htmlFor="passportNumber">Номер паспорта</Label>
+                            <Label htmlFor="passportNumber" className="text-lg font-semibold text-gray-700">Номер паспорта</Label>
                             <Input
                               id="passportNumber"
                               placeholder="567890"
                               value={formData.passportNumber}
                               onChange={(e) => setFormData({...formData, passportNumber: e.target.value})}
                               required
+                              className="h-12 text-lg rounded-xl"
                             />
                           </div>
                         </div>
 
                         <div>
-                          <Label htmlFor="address">Адрес регистрации</Label>
+                          <Label htmlFor="address" className="text-lg font-semibold text-gray-700">Адрес регистрации</Label>
                           <Input
                             id="address"
                             value={formData.address}
                             onChange={(e) => setFormData({...formData, address: e.target.value})}
                             required
+                            className="h-12 text-lg rounded-xl"
                           />
                         </div>
 
                         <div>
-                          <Label htmlFor="workplace">Место работы</Label>
+                          <Label htmlFor="workplace" className="text-lg font-semibold text-gray-700">Место работы</Label>
                           <Input
                             id="workplace"
                             value={formData.workplace}
                             onChange={(e) => setFormData({...formData, workplace: e.target.value})}
                             required
+                            className="h-12 text-lg rounded-xl"
                           />
                         </div>
 
-                        <Button type="submit" className="w-full bg-gradient-to-r from-mfo-yellow to-mfo-green text-white rounded-2xl">
+                        <Button type="submit" className="w-full bg-gradient-to-r from-mfo-yellow to-mfo-green text-white rounded-2xl text-xl py-6 font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                           Отправить заявку
                         </Button>
                       </form>
