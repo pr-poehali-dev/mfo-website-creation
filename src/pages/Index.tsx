@@ -83,23 +83,23 @@ export default function Index() {
               <a href="#calculator" className="text-gray-700 hover:text-mfo-darkgreen transition-colors font-medium">Калькулятор</a>
               <a href="#about" className="text-gray-700 hover:text-mfo-darkgreen transition-colors font-medium">О нас</a>
               <a href="#contacts" className="text-gray-700 hover:text-mfo-darkgreen transition-colors font-medium">Контакты</a>
-              <Button 
-                className="bg-gradient-to-r from-mfo-yellow to-mfo-green hover:from-mfo-green hover:to-mfo-yellow text-white font-bold px-6 py-2 rounded-2xl shadow-lg transform transition-all duration-300 hover:scale-105"
-                onClick={() => window.location.href = '/login'}
+              <a 
+                href="/login"
+                className="inline-flex items-center bg-gradient-to-r from-mfo-yellow to-mfo-green hover:from-mfo-green hover:to-mfo-yellow text-white font-bold px-6 py-2 rounded-2xl shadow-lg transform transition-all duration-300 hover:scale-105 text-decoration-none"
               >
                 <Icon name="User" size={18} className="mr-2" />
                 Личный кабинет
-              </Button>
+              </a>
             </nav>
             
             {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <Button 
-                className="bg-gradient-to-r from-mfo-yellow to-mfo-green text-white font-bold px-4 py-2 rounded-xl shadow-lg"
-                onClick={() => window.location.href = '/login'}
+              <a 
+                href="/login"
+                className="inline-flex items-center justify-center bg-gradient-to-r from-mfo-yellow to-mfo-green text-white font-bold px-4 py-2 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300"
               >
                 <Icon name="User" size={16} />
-              </Button>
+              </a>
             </div>
           </div>
         </div>
