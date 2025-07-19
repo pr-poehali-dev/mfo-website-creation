@@ -30,11 +30,11 @@ export default function Index() {
     e.preventDefault();
     setIsProcessing(true);
     
-    // Симуляция 30-секундной обработки
+    // Симуляция 1-минутной обработки
     setTimeout(() => {
       setIsProcessing(false);
       setIsApproved(true);
-    }, 3000); // Сокращено для демо
+    }, 60000); // 60 секунд
   };
 
   const calculateMonthlyPayment = (amount: number) => {
@@ -79,14 +79,14 @@ export default function Index() {
             Быстрые займы от 1 000 до 30 000 ₽
           </h2>
           <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-            Получите деньги на карту за 30 секунд. Без справок и поручителей.
+            Получите деньги на карту за 1 минуту. Без справок и поручителей.
           </p>
           <div className="flex justify-center space-x-8 mb-12">
             <div className="text-center">
               <div className="w-16 h-16 bg-mfo-yellow rounded-full flex items-center justify-center mx-auto mb-2 animate-float">
                 <Icon name="Clock" size={32} className="text-white" />
               </div>
-              <p className="font-semibold">30 секунд</p>
+              <p className="font-semibold">1 минута</p>
               <p className="text-sm text-gray-600">на рассмотрение</p>
             </div>
             <div className="text-center">
@@ -110,7 +110,7 @@ export default function Index() {
       {/* 3D Calculator */}
       <section id="calculator" className="py-16 px-4">
         <div className="container mx-auto max-w-4xl">
-          <Card className="bg-white/80 backdrop-blur-sm shadow-2xl border-0 transform perspective-1000 animate-pulse-3d">
+          <Card className="bg-white/80 backdrop-blur-sm shadow-2xl border-0 transform perspective-1000 animate-pulse-3d rounded-3xl">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl font-bold bg-gradient-to-r from-mfo-darkgreen to-mfo-yellow bg-clip-text text-transparent">
                 Калькулятор займа
@@ -152,7 +152,7 @@ export default function Index() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="text-center p-6 bg-gradient-to-r from-mfo-yellow to-mfo-green rounded-lg text-white">
+                  <div className="text-center p-6 bg-gradient-to-r from-mfo-yellow to-mfo-green rounded-2xl text-white">
                     <Icon name="TrendingUp" size={48} className="mx-auto mb-2" />
                     <p className="text-sm">Переплата</p>
                     <p className="text-2xl font-bold">{(calculateMonthlyPayment(loanAmount[0]) - loanAmount[0]).toLocaleString()} ₽</p>
@@ -162,12 +162,12 @@ export default function Index() {
 
               <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
                 <DialogTrigger asChild>
-                  <Button className="w-full bg-gradient-to-r from-mfo-yellow to-mfo-green hover:from-mfo-green hover:to-mfo-yellow text-white text-lg py-6 transform transition-all duration-300 hover:scale-105 shadow-lg">
+                  <Button className="w-full bg-gradient-to-r from-mfo-yellow to-mfo-green hover:from-mfo-green hover:to-mfo-yellow text-white text-lg py-6 transform transition-all duration-300 hover:scale-105 shadow-lg rounded-2xl">
                     <Icon name="FileText" size={20} className="mr-2" />
                     Подать заявку на {loanAmount[0].toLocaleString()} ₽
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl">
                   {!isProcessing && !isApproved ? (
                     <>
                       <DialogHeader>
@@ -260,7 +260,7 @@ export default function Index() {
                           />
                         </div>
 
-                        <Button type="submit" className="w-full bg-gradient-to-r from-mfo-yellow to-mfo-green text-white">
+                        <Button type="submit" className="w-full bg-gradient-to-r from-mfo-yellow to-mfo-green text-white rounded-2xl">
                           Отправить заявку
                         </Button>
                       </form>
@@ -271,7 +271,7 @@ export default function Index() {
                         <Icon name="Loader2" size={32} className="text-white" />
                       </div>
                       <h3 className="text-xl font-bold mb-2">Рассматриваем заявку...</h3>
-                      <p className="text-gray-600">Это займет не более 30 секунд</p>
+                      <p className="text-gray-600">Это займет не более 1 минуты</p>
                     </div>
                   ) : (
                     <div className="text-center py-12">
@@ -284,7 +284,7 @@ export default function Index() {
                         <p><span className="font-semibold">Срок:</span> 30 дней</p>
                         <p><span className="font-semibold">Номер договора:</span> ЗФИ-{Math.random().toString().substr(2, 8)}</p>
                       </div>
-                      <Button onClick={() => setIsFormOpen(false)} className="bg-mfo-green text-white">
+                      <Button onClick={() => setIsFormOpen(false)} className="bg-mfo-green text-white rounded-2xl">
                         Закрыть
                       </Button>
                     </div>
@@ -325,7 +325,7 @@ export default function Index() {
 
       {/* Cookie Consent */}
       {showCookies && (
-        <div className="fixed bottom-4 left-4 right-4 bg-white shadow-lg rounded-lg p-4 z-50 border border-mfo-green">
+        <div className="fixed bottom-4 left-4 right-4 bg-white shadow-lg rounded-2xl p-4 z-50 border border-mfo-green">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex-1">
               <p className="text-sm">
@@ -333,10 +333,10 @@ export default function Index() {
               </p>
             </div>
             <div className="flex space-x-2">
-              <Button variant="outline" size="sm" onClick={() => setShowCookies(false)}>
+              <Button variant="outline" size="sm" className="rounded-xl" onClick={() => setShowCookies(false)}>
                 Отклонить
               </Button>
-              <Button size="sm" className="bg-mfo-green text-white" onClick={() => setShowCookies(false)}>
+              <Button size="sm" className="bg-mfo-green text-white rounded-xl" onClick={() => setShowCookies(false)}>
                 Принять
               </Button>
             </div>
