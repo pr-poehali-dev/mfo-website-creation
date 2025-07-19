@@ -75,12 +75,28 @@ export default function Index() {
       {/* Hero Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto text-center">
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-mfo-darkgreen to-mfo-yellow bg-clip-text text-transparent animate-slide-in">
-            Быстрые займы от 1 000 до 30 000 ₽
-          </h2>
-          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-            Получите деньги на карту за 1 минуту. Без справок и поручителей.
-          </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-mfo-darkgreen to-mfo-yellow bg-clip-text text-transparent animate-slide-in">
+                Быстрые займы от 1 000 до 30 000 ₽
+              </h2>
+              <p className="text-xl text-gray-700 mb-8">
+                Получите деньги на карту за 1 минуту. Без справок и поручителей.
+              </p>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative">
+                <img 
+                  src="/img/4273429f-4b28-42ab-9ecc-46fed76be1c6.jpg" 
+                  alt="Ваш персональный консультант" 
+                  className="w-64 h-64 object-cover rounded-3xl shadow-2xl animate-pulse-3d border-4 border-mfo-yellow"
+                />
+                <div className="absolute -top-4 -right-4 bg-mfo-green text-white px-4 py-2 rounded-2xl shadow-lg animate-bounce">
+                  <p className="text-sm font-semibold">Ваш консультант!</p>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="flex justify-center space-x-8 mb-12">
             <div className="text-center">
               <div className="w-16 h-16 bg-mfo-yellow rounded-full flex items-center justify-center mx-auto mb-2 animate-float">
@@ -109,7 +125,7 @@ export default function Index() {
 
       {/* 3D Calculator */}
       <section id="calculator" className="py-16 px-4">
-        <div className="container mx-auto max-w-4xl">
+        <div className="container mx-auto max-w-6xl">
           <Card className="bg-white/80 backdrop-blur-sm shadow-2xl border-0 transform perspective-1000 animate-pulse-3d rounded-3xl">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl font-bold bg-gradient-to-r from-mfo-darkgreen to-mfo-yellow bg-clip-text text-transparent">
@@ -118,6 +134,19 @@ export default function Index() {
               <p className="text-gray-600">Рассчитайте сумму к возврату</p>
             </CardHeader>
             <CardContent className="space-y-8">
+              {/* 3D Character */}
+              <div className="flex justify-center mb-8">
+                <div className="relative">
+                  <img 
+                    src="/img/4273429f-4b28-42ab-9ecc-46fed76be1c6.jpg" 
+                    alt="Финансовый консультант" 
+                    className="w-32 h-32 object-cover rounded-full border-4 border-mfo-yellow shadow-2xl animate-float"
+                  />
+                  <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-mfo-green rounded-full flex items-center justify-center border-2 border-white">
+                    <Icon name="MessageCircle" size={16} className="text-white" />
+                  </div>
+                </div>
+              </div>
               <div className="space-y-4">
                 <Label className="text-lg font-semibold">Сумма займа: {loanAmount[0].toLocaleString()} ₽</Label>
                 <Slider
@@ -134,8 +163,8 @@ export default function Index() {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-3">
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+                <div className="space-y-3 lg:col-span-2">
                   <div className="flex justify-between">
                     <span>Срок займа:</span>
                     <Badge variant="secondary" className="bg-mfo-green text-white">30 дней</Badge>
@@ -151,7 +180,7 @@ export default function Index() {
                   </div>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-4 lg:col-span-1">
                   <div className="text-center p-6 bg-gradient-to-r from-mfo-yellow to-mfo-green rounded-2xl text-white">
                     <Icon name="TrendingUp" size={48} className="mx-auto mb-2" />
                     <p className="text-sm">Переплата</p>
