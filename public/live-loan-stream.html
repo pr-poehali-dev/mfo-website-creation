@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔴 ПРЯМОЙ ЭФИР - Займы без отказа до 1 000 000₽</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c, #1a1a1a);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Live Stream Header */
+        .stream-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            border-bottom: 2px solid #ff0000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .live-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ff0000;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            animation: livePulse 2s infinite;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        .viewers-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .viewer-count {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stream-time {
+            color: #00ff88;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        @keyframes livePulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.8); }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 20px;
+        }
+
+        /* Stream Title */
+        .stream-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title-main {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff0000, #ff6b6b, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        .title-sub {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .urgent-alert {
+            background: linear-gradient(135deg, #ff4757, #ff3742);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            animation: urgentPulse 2s infinite;
+            border: 2px solid #ffd700;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        @keyframes urgentPulse {
+            0%, 100% { transform: scale(1); border-color: #ffd700; }
+            50% { transform: scale(1.02); border-color: #ff0000; }
+        }
+
+        /* Video Player */
+        .video-container {
+            position: relative;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-player {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(45deg, #1e3c72, #2a5298, #ff6b6b, #ffd700);
+            background-size: 300% 300%;
+            animation: videoAnimation 4s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes videoAnimation {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .expert-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: avatarFloat 3s ease-in-out infinite;
+            border: 4px solid white;
+        }
+
+        @keyframes avatarFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .expert-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .expert-title {
+            font-size: 16px;
+            color: #ffd700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Video Controls */
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .control-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .play-button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: #ff0000;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            background: #cc0000;
+        }
+
+        .volume-slider {
+            width: 80px;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ff0000;
+            cursor: pointer;
+        }
+
+        .control-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .quality-selector {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        .fullscreen-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Sidebar Layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Loan Application Form */
+        .loan-application {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 25px;
+            border-radius: 15px;
+            border: 3px solid #00ff88;
+            animation: formGlow 3s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loan-application::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes formGlow {
+            0%, 100% { 
+                border-color: #00ff88; 
+                box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); 
+            }
+            50% { 
+                border-color: #ffd700; 
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); 
+            }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #00ff88;
+            margin-bottom: 5px;
+        }
+
+        .form-subtitle {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+            transform: scale(1.02);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .amount-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .amount-display {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffd700;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .amount-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+            -webkit-appearance: none;
+            margin: 10px 0;
+        }
+
+        .amount-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00ff88, #ffd700);
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #ff4757, #ff6b7a);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: buttonPulse 2s infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 10px 30px rgba(255, 71, 87, 0.6);
+            }
+        }
+
+        .submit-button:hover {
+            transform: scale(1.08);
+            background: linear-gradient(135deg, #ff3742, #ff4757);
+        }
+
+        /* Real-time Notifications */
+        .notifications-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1001;
+            max-width: 350px;
+        }
+
+        .notification {
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00ff88;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            animation: slideInRight 0.5s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        .notification.success {
+            border-color: #00ff88;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .notification.warning {
+            border-color: #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .notification-icon {
+            font-size: 20px;
+        }
+
+        .notification-title {
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        .notification-text {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        .notification-time {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Statistics Panel */
+        .stats-panel {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #00ff88;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #ccc;
+            margin-top: 5px;
+        }
+
+        /* Chat Section */
+        .chat-section {
+            grid-column: 1 / -1;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .chat-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        .chat-count {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .chat-messages {
+            height: 200px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #333 transparent;
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            animation: messageAppear 0.5s ease-out;
+        }
+
+        @keyframes messageAppear {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .message-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .message-content {
+            flex: 1;
+        }
+
+        .message-header {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .message-author {
+            font-weight: bold;
+            color: #00ff88;
+            font-size: 14px;
+        }
+
+        .message-time {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .message-text {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        /* Countdown Timer */
+        .countdown-section {
+            text-align: center;
+            background: linear-gradient(135deg, #ff4757, #ff3742);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            animation: countdownGlow 2s infinite;
+        }
+
+        @keyframes countdownGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 71, 87, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(255, 71, 87, 0.8); }
+        }
+
+        .countdown-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .countdown-timer {
+            font-size: 36px;
+            font-weight: bold;
+            font-family: monospace;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 80px 10px 20px;
+            }
+
+            .title-main {
+                font-size: 24px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .video-player {
+                height: 300px;
+            }
+
+            .expert-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+            }
+
+            .notifications-container {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 20px 0;
+            }
+
+            .countdown-timer {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stream Header -->
+    <div class="stream-header">
+        <div class="header-content">
+            <div class="live-badge">
+                <div class="live-dot"></div>
+                <span>ПРЯМОЙ ЭФИР</span>
+            </div>
+            <div class="viewers-info">
+                <div class="viewer-count">
+                    👁️ <span id="viewerCount">2,847</span> зрителей
+                </div>
+                <div class="stream-time" id="streamTime">00:47:23</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Container -->
+    <div class="notifications-container" id="notificationsContainer">
+        <!-- Notifications will appear here -->
+    </div>
+
+    <div class="container">
+        <!-- Stream Title -->
+        <div class="stream-title">
+            <h1 class="title-main">🔴 ПРЯМАЯ ТРАНСЛЯЦИЯ ВЫДАЧИ ЗАЙМОВ</h1>
+            <p class="title-sub">Эксперт по микрофинансам отвечает на вопросы и одобряет заявки в режиме реального времени</p>
+            <div class="urgent-alert">
+                ⚠️ ВНИМАНИЕ! Сегодня одобряем 100% заявок до 23:59! Не упустите шанс! ⚠️
+            </div>
+        </div>
+
+        <!-- Video Player -->
+        <div class="video-container">
+            <div class="video-player">
+                <div class="video-overlay">
+                    <div class="expert-avatar">АК</div>
+                    <div class="expert-name">Анна Кириллова</div>
+                    <div class="expert-title">Ведущий эксперт по микрозаймам</div>
+                </div>
+                <div class="video-controls">
+                    <div class="control-left">
+                        <button class="play-button" onclick="togglePlay()">⏸️</button>
+                        <span>🔊</span>
+                        <input type="range" class="volume-slider" min="0" max="100" value="75">
+                        <span style="font-size: 12px; color: #ccc;">47:23</span>
+                    </div>
+                    <div class="control-right">
+                        <select class="quality-selector">
+                            <option>1080p HD</option>
+                            <option>720p</option>
+                            <option>480p</option>
+                        </select>
+                        <button class="fullscreen-btn">⛶</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Main Content -->
+            <div>
+                <!-- Statistics Panel -->
+                <div class="stats-panel">
+                    <div class="stats-title">📊 Статистика эфира</div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" id="approvedToday">47</div>
+                            <div class="stat-label">Одобрено сегодня</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="totalAmount">12.8М</div>
+                            <div class="stat-label">Сумма выданных займов</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">0.9%</div>
+                            <div class="stat-label">Процент отказов</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2:47</div>
+                            <div class="stat-label">Среднее время одобрения</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="countdown-section">
+                    <div class="countdown-title">⏰ До конца акции "100% одобрение" осталось:</div>
+                    <div class="countdown-timer" id="countdownTimer">07:12:45</div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div>
+                <!-- Loan Application Form -->
+                <div class="loan-application">
+                    <div class="form-header">
+                        <div class="form-title">⚡ МГНОВЕННАЯ ЗАЯВКА НА ЗАЙМ</div>
+                        <div class="form-subtitle">Заполните форму и получите деньги за 3 минуты</div>
+                    </div>
+
+                    <form id="loanApplicationForm">
+                        <div class="form-group">
+                            <label class="form-label">Ваше имя и фамилия</label>
+                            <input type="text" class="form-input" placeholder="Иван Иванов" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Номер телефона</label>
+                            <input type="tel" class="form-input" placeholder="+7 (999) 123-45-67" required>
+                        </div>
+
+                        <div class="amount-section">
+                            <label class="form-label">Сумма займа</label>
+                            <div class="amount-display" id="loanAmount">100 000 ₽</div>
+                            <input type="range" class="amount-slider" id="amountSlider" 
+                                   min="1000" max="1000000" value="100000" step="1000">
+                            <div style="display: flex; justify-content: space-between; font-size: 12px; color: #ccc;">
+                                <span>1 000 ₽</span>
+                                <span>1 000 000 ₽</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Срок займа</label>
+                            <select class="form-select" required>
+                                <option value="">Выберите срок</option>
+                                <option value="7">7 дней (0%)</option>
+                                <option value="14">14 дней</option>
+                                <option value="30">30 дней</option>
+                                <option value="60">60 дней</option>
+                                <option value="90">90 дней</option>
+                                <option value="365">1 год</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="submit-button">
+                            🚀 Получить займ сейчас!
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Section -->
+        <div class="chat-section">
+            <div class="chat-header">
+                <div class="chat-title">💬 Чат эфира</div>
+                <div class="chat-count">Участников: <span id="chatParticipants">847</span></div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be added by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chat messages data
+        const chatMessagesData = [
+            {author: "Максим К.", text: "Только что подал заявку! Уже звонят из банка 🔥", avatar: "МК"},
+            {author: "Светлана М.", text: "Анна, спасибо за стрим! Очень информативно 👏", avatar: "СМ"},
+            {author: "Дмитрий А.", text: "Взял 200к на полгода, одобрили за 2 минуты!", avatar: "ДА"},
+            {author: "Анна Кириллова", text: "Друзья, помните - первый займ под 0%! Успевайте!", avatar: "АК"},
+            {author: "Елена В.", text: "А можно взять 500к на год?", avatar: "ЕВ"},
+            {author: "Анна Кириллова", text: "Елена, конечно! Максимум 1 млн рублей 💰", avatar: "АК"},
+            {author: "Игорь С.", text: "Реально работает! Деньги уже на карте 🎉", avatar: "ИС"},
+            {author: "Мария П.", text: "Какие документы нужны?", avatar: "МП"},
+            {author: "Анна Кириллова", text: "Только паспорт! Никаких справок не требуется ✅", avatar: "АК"},
+            {author: "Александр Т.", text: "Взял 150к, вернул досрочно, всё отлично!", avatar: "АТ"}
+        ];
+
+        // Notification messages
+        const notifications = [
+            {
+                type: "success",
+                icon: "💰",
+                title: "Заявка одобрена!",
+                text: "Владимир М. получил займ 75 000 ₽ на 30 дней",
+                time: "1 мин назад"
+            },
+            {
+                type: "success", 
+                icon: "✅",
+                title: "Быстрое одобрение!",
+                text: "Екатерина С. получила 200 000 ₽ за 1 минуту 47 секунд",
+                time: "2 мин назад"
+            },
+            {
+                type: "warning",
+                icon: "⏰",
+                title: "Заявка в обработке",
+                text: "Анатолий К. - заявка на 350 000 ₽ рассматривается",
+                time: "30 сек назад"
+            },
+            {
+                type: "success",
+                icon: "🎉", 
+                title: "Крупный займ одобрен!",
+                text: "Ольга М. получила займ 500 000 ₽ на 6 месяцев",
+                time: "3 мин назад"
+            }
+        ];
+
+        let currentChatIndex = 0;
+        let currentNotificationIndex = 0;
+        let streamTimeSeconds = 2843; // 47:23 in seconds
+        let countdownSeconds = 25965; // 07:12:45 in seconds
+        let approvedCount = 47;
+        let totalAmountMillion = 12.8;
+
+        // Initialize page
+        function init() {
+            updateAmountSlider();
+            loadInitialChatMessages();
+            startIntervals();
+        }
+
+        // Amount slider
+        function updateAmountSlider() {
+            const slider = document.getElementById('amountSlider');
+            const display = document.getElementById('loanAmount');
+            
+            slider.addEventListener('input', function() {
+                const value = parseInt(this.value);
+                display.textContent = value.toLocaleString('ru-RU') + ' ₽';
+            });
+        }
+
+        // Load initial chat messages
+        function loadInitialChatMessages() {
+            const container = document.getElementById('chatMessages');
+            
+            // Add first 5 messages
+            for (let i = 0; i < 5; i++) {
+                addChatMessage(chatMessagesData[i]);
+                currentChatIndex++;
+            }
+        }
+
+        // Add chat message
+        function addChatMessage(messageData) {
+            const container = document.getElementById('chatMessages');
+            const messageElement = document.createElement('div');
+            messageElement.className = 'chat-message';
+            
+            const now = new Date();
+            const timeString = now.getHours().toString().padStart(2, '0') + ':' + 
+                              now.getMinutes().toString().padStart(2, '0');
+            
+            messageElement.innerHTML = `
+                <div class="message-avatar">${messageData.avatar}</div>
+                <div class="message-content">
+                    <div class="message-header">
+                        <div class="message-author">${messageData.author}</div>
+                        <div class="message-time">${timeString}</div>
+                    </div>
+                    <div class="message-text">${messageData.text}</div>
+                </div>
+            `;
+            
+            container.appendChild(messageElement);
+            
+            // Remove old messages if too many
+            if (container.children.length > 8) {
+                container.removeChild(container.firstChild);
+            }
+            
+            // Scroll to bottom
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // Add new chat message periodically
+        function addNewChatMessage() {
+            if (currentChatIndex >= chatMessagesData.length) {
+                currentChatIndex = 0;
+            }
+            
+            addChatMessage(chatMessagesData[currentChatIndex]);
+            currentChatIndex++;
+        }
+
+        // Show notification
+        function showNotification() {
+            const container = document.getElementById('notificationsContainer');
+            const notification = notifications[currentNotificationIndex];
+            
+            const notificationElement = document.createElement('div');
+            notificationElement.className = `notification ${notification.type}`;
+            notificationElement.innerHTML = `
+                <div class="notification-header">
+                    <div class="notification-icon">${notification.icon}</div>
+                    <div class="notification-title">${notification.title}</div>
+                </div>
+                <div class="notification-text">${notification.text}</div>
+                <div class="notification-time">${notification.time}</div>
+            `;
+            
+            container.appendChild(notificationElement);
+            
+            // Remove notification after 5 seconds
+            setTimeout(() => {
+                if (notificationElement.parentNode) {
+                    notificationElement.remove();
+                }
+            }, 5000);
+            
+            // Remove old notifications if too many
+            if (container.children.length > 3) {
+                container.removeChild(container.firstChild);
+            }
+            
+            currentNotificationIndex = (currentNotificationIndex + 1) % notifications.length;
+            
+            // Update stats
+            if (Math.random() > 0.6) {
+                approvedCount++;
+                totalAmountMillion += Math.random() * 0.1;
+                updateStats();
+            }
+        }
+
+        // Update statistics
+        function updateStats() {
+            document.getElementById('approvedToday').textContent = approvedCount;
+            document.getElementById('totalAmount').textContent = totalAmountMillion.toFixed(1) + 'М';
+        }
+
+        // Update viewers count
+        function updateViewers() {
+            const element = document.getElementById('viewerCount');
+            const current = parseInt(element.textContent.replace(/,/g, ''));
+            const change = Math.floor(Math.random() * 10) - 4; // Random change -4 to +5
+            const newCount = Math.max(2500, current + change);
+            element.textContent = newCount.toLocaleString('ru-RU');
+        }
+
+        // Update stream time
+        function updateStreamTime() {
+            streamTimeSeconds++;
+            const hours = Math.floor(streamTimeSeconds / 3600);
+            const minutes = Math.floor((streamTimeSeconds % 3600) / 60);
+            const seconds = streamTimeSeconds % 60;
+            
+            document.getElementById('streamTime').textContent = 
+                String(hours).padStart(2, '0') + ':' +
+                String(minutes).padStart(2, '0') + ':' +
+                String(seconds).padStart(2, '0');
+        }
+
+        // Update countdown timer
+        function updateCountdown() {
+            countdownSeconds--;
+            if (countdownSeconds < 0) {
+                countdownSeconds = 86400; // Reset to 24 hours
+            }
+            
+            const hours = Math.floor(countdownSeconds / 3600);
+            const minutes = Math.floor((countdownSeconds % 3600) / 60);
+            const seconds = countdownSeconds % 60;
+            
+            document.getElementById('countdownTimer').textContent = 
+                String(hours).padStart(2, '0') + ':' +
+                String(minutes).padStart(2, '0') + ':' +
+                String(seconds).padStart(2, '0');
+        }
+
+        // Toggle play button
+        function togglePlay() {
+            const button = document.querySelector('.play-button');
+            button.textContent = button.textContent === '⏸️' ? '▶️' : '⏸️';
+        }
+
+        // Form submission
+        document.getElementById('loanApplicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const button = document.querySelector('.submit-button');
+            const originalText = button.textContent;
+            
+            // Show processing state
+            button.textContent = '⏳ ОБРАБОТКА ЗАЯВКИ...';
+            button.disabled = true;
+            button.style.background = 'linear-gradient(135deg, #ffd700, #ffed4e)';
+            
+            // Simulate processing
+            setTimeout(() => {
+                button.textContent = '✅ ЗАЯВКА ОДОБРЕНА!';
+                button.style.background = 'linear-gradient(135deg, #00ff88, #00cc6a)';
+                
+                // Show success message
+                alert('🎉 ПОЗДРАВЛЯЕМ!\n\n💰 Ваша заявка ОДОБРЕНА!\n⏰ Деньги поступят на карту в течение 3-5 минут.\n📞 Наш менеджер свяжется с вами для подтверждения.\n\n✅ Номер заявки: ' + Math.floor(Math.random() * 100000));
+                
+                // Add notification
+                setTimeout(() => {
+                    showNotification();
+                }, 1000);
+                
+            }, 3000);
+        });
+
+        // Start all intervals
+        function startIntervals() {
+            setInterval(updateStreamTime, 1000);
+            setInterval(updateCountdown, 1000);
+            setInterval(updateViewers, 5000);
+            setInterval(addNewChatMessage, 8000);
+            setInterval(showNotification, 12000);
+            
+            // Show initial notification
+            setTimeout(showNotification, 2000);
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
